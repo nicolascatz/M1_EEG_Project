@@ -1,7 +1,9 @@
 
-
 const int pinSpeaker = 9;
 const int pinTrigger = 7;
+
+// ttl duration
+int ttlDuration = 25; // ms attention Nyquist twice (second board then openbci - sampling freq 256)
 
 // Define the number of trials
 int intTrials = 120;
@@ -34,8 +36,7 @@ void loop() {
 
   // read the state of the ttl input:
   triggerState = digitalRead(pinTrigger);
-
-  Serial.println(digitalRead(pinTrigger));
+  Serial.println(triggerState);
 
   // check if the ttl input is HIGH:
   if (triggerState == HIGH) {
@@ -50,11 +51,13 @@ void loop() {
     while (millis() - startTime < soundDuration) {
       tone(pinSpeaker, random(100, soundFreq));
       delay(5);
+
+      //Serial.println(digitalRead(pinTrigger));
     }
 
     // clic déclenchement simultané du son et du trigger
     //tone(pinSpeaker, soundFreq, dureeClic);
-    //delay(5);
+    //delay(ttlDuration);
 
     // turn off speaker
     noTone(pinSpeaker);

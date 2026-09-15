@@ -1,7 +1,9 @@
 
-
 const int pinTrigger = 10;
 const int pinStartButton = 3;
+
+// ttl duration 
+int ttlDuration = 25;  // attention Nyquist twice (second board then openbci - sampling freq 256)
 
 // Define the number of trials
 int intTrials = 120;
@@ -43,7 +45,7 @@ void loop() {
       
       // trigger sent to openbci and board buzzer
       digitalWrite(pinTrigger, HIGH);
-      delay(6);
+      delay(ttlDuration);
 
       // intervalle inter-stimulus jitté (évite l'anticipation)
       digitalWrite(pinTrigger, LOW);
