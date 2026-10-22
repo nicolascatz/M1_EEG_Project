@@ -2,10 +2,12 @@
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
-scripts_hidden
 Eye_Open_Closed
 Oddball
 data_SL/
 scripts_SL/
+scripts_hidden/
 
 
+
+data_TP_NE1/*.npy
